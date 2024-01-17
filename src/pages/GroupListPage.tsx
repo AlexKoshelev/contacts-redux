@@ -4,14 +4,14 @@ import { GroupContactsCard } from "src/components/GroupContactsCard";
 import { useAppSelector } from "src/redux/hooks";
 
 export const GroupListPage = memo(() => {
-  const groups = useAppSelector((state) => state.contacts.groups);
+  /*   const groups = useAppSelector((state) => state.contacts.groups); */
   return (
     <Row xxl={4}>
-      {groups.map((groupContacts) => (
+      {/*   {groups.map((groupContacts) => (
         <Col key={groupContacts.id}>
           <GroupContactsCard groupContacts={groupContacts} withLink />
         </Col>
-      ))}
+      ))} */}
     </Row>
   );
 });

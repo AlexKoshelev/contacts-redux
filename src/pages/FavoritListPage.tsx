@@ -5,7 +5,7 @@ import { useAppSelector } from "src/redux/hooks";
 import { ContactDto } from "src/types/dto/ContactDto";
 
 export const FavoritListPage = memo(() => {
-  const favoriteContacts = useAppSelector((state) => {
+  /*   const favoriteContacts = useAppSelector((state) => {
     let favoriteContacts: ContactDto[] | [] = [];
     const favoriteContactsIdArr = state.contacts.favoritContactsId;
     for (let i = 0; i <= favoriteContactsIdArr.length; i++) {
@@ -17,14 +17,14 @@ export const FavoritListPage = memo(() => {
       ];
     }
     return favoriteContacts;
-  });
+  }); */
   return (
     <Row xxl={4} className="g-4">
-      {favoriteContacts.map((contact) => (
+      {/*    {favoriteContacts.map((contact) => (
         <Col key={contact.id}>
           <ContactCard contact={contact} withLink />
         </Col>
-      ))}
+      ))} */}
     </Row>
   );
 });
