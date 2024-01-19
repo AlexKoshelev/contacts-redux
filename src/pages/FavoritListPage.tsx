@@ -1,23 +1,11 @@
-import React, { memo } from "react";
+import { observer } from "mobx-react-lite";
 import { Col, Row } from "react-bootstrap";
 import { ContactCard } from "src/components/ContactCard";
-import { useAppSelector } from "src/redux/hooks";
-import { ContactDto } from "src/types/dto/ContactDto";
+import { store } from "src/store/contactsStore";
 
-export const FavoritListPage = memo(() => {
-  const favoriteContacts = useAppSelector((state) => {
-    let favoriteContacts: ContactDto[] | [] = [];
-    const favoriteContactsIdArr = state.contacts.favoritContactsId;
-    for (let i = 0; i <= favoriteContactsIdArr.length; i++) {
-      favoriteContacts = [
-        ...favoriteContacts,
-        ...state.contacts.contacts.filter(
-          (contact) => contact.id === favoriteContactsIdArr[i]
-        ),
-      ];
-    }
-    return favoriteContacts;
-  });
+export const FavoritListPage = observer(() => {
+  const { favoriteContacts } = store;
+
   return (
     <Row xxl={4} className="g-4">
       {favoriteContacts.map((contact) => (
