@@ -8,15 +8,15 @@ import { ContactCard } from "src/components/ContactCard";
 import { useAppSelector } from "src/redux/hooks";
 
 export const GroupPage = memo(() => {
-  const { groupId } = useParams<{ groupId: string }>();
+  /*   const { groupId } = useParams<{ groupId: string }>();
   const { contacts, groups } = useAppSelector((state) => state.contacts);
   const selectedGroup = groups.find((group) => group.id === groupId);
   const currentGroupContacts = contacts.filter((contact) =>
     selectedGroup?.contactIds.includes(contact.id)
-  );
+  ); */
   return (
     <Row className="g-4">
-      {groups ? (
+      {/*  {groups ? (
         <>
           <Col xxl={12}>
             <Row xxl={3}>
@@ -37,7 +37,7 @@ export const GroupPage = memo(() => {
         </>
       ) : (
         <Empty />
-      )}
+      )} */}
     </Row>
   );
 });
