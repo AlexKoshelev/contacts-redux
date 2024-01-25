@@ -1,10 +1,10 @@
-import React, { memo } from "react";
+import { observer } from "mobx-react-lite";
 import { Col, Row } from "react-bootstrap";
 import { GroupContactsCard } from "src/components/GroupContactsCard";
-import { useAppSelector } from "src/redux/hooks";
+import { store } from "src/store/contactsStore";
 
-export const GroupListPage = memo(() => {
-  const groups = useAppSelector((state) => state.contacts.groups);
+export const GroupListPage = observer(() => {
+  const { groups } = store;
   return (
     <Row xxl={4}>
       {groups.map((groupContacts) => (

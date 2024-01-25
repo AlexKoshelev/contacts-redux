@@ -1,17 +1,14 @@
-import React, { memo } from "react";
-
 import { Col, Row } from "react-bootstrap";
-import { ContactCard } from "src/components/ContactCard";
+import { store } from "../store/contactsStore";
+import { observer } from "mobx-react-lite";
 import { FilterForm, FilterFormValues } from "src/components/FilterForm";
+import { ContactCard } from "src/components/ContactCard";
 
-import { useAppDispatch, useAppSelector } from "src/redux/hooks";
-import { filtredActionCreator } from "src/redux/actions";
+export const ContactListPage = observer(() => {
+  const { isLoading, error, getFilterContacts, findContacts } = store;
 
-export const ContactListPage = memo(() => {
-  const findContacts = useAppSelector((state) => state.contacts.findContacts);
-  const dispatch = useAppDispatch();
   const onSubmit = (fv: Partial<FilterFormValues>) => {
-    dispatch(filtredActionCreator(fv.name!, fv.groupId!));
+    getFilterContacts({ name: fv.name!, groupId: fv.groupId! });
   };
 
   return (
@@ -19,6 +16,8 @@ export const ContactListPage = memo(() => {
       <Col className="mb-3">
         <FilterForm initialValues={{}} onSubmit={onSubmit} />
       </Col>
+      {isLoading && "Загрузка"}
+      {error && "Ошибка"}
       <Col>
         <Row xxl={4} className="g-4">
           {findContacts.map((contact) => (
@@ -27,7 +26,7 @@ export const ContactListPage = memo(() => {
             </Col>
           ))}
         </Row>
-      </Col>
+      </Col>{" "}
     </Row>
   );
 });
